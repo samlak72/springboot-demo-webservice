@@ -2,7 +2,9 @@ package com.samlsoft.demo.webservice.web;
 
 import com.samlsoft.demo.webservice.domain.posts.PostsRepository;
 import com.samlsoft.demo.webservice.service.posts.PostsService;
+import com.samlsoft.demo.webservice.web.dto.PostsResponseDto;
 import com.samlsoft.demo.webservice.web.dto.PostsSaveRequestDto;
+import com.samlsoft.demo.webservice.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,4 +18,15 @@ public class PostsApiController {
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {
         return postsService.save(requestDto);
     }
+
+    @PutMapping("/api/v1/posts/{id}")
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+        return postsService.update(id, requestDto);
+    }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponseDto get(@PathVariable Long id){
+        return postsService.findById(id);
+    }
+
 }
