@@ -1,5 +1,6 @@
 package com.samlsoft.demo.webservice.web;
 
+import com.samlsoft.demo.webservice.config.auth.LoginUser;
 import com.samlsoft.demo.webservice.config.auth.dto.SessionUser;
 import com.samlsoft.demo.webservice.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +23,10 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @RequestMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser sessionUser) {
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        if (user != null) {
-            model.addAttribute("userName", user.getName());
+        if (sessionUser != null) {
+            model.addAttribute("userName", sessionUser.getName());
         }
         return "index";
     }
