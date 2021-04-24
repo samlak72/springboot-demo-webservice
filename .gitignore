@@ -2,5 +2,5 @@
 .idea
 build
 application-oauth2.yml
-application-real*
+application-real-db.yml
 out
