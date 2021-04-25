@@ -31,6 +31,16 @@ deploy:
     acl: private
     local_dir: deploy
     wait-until-deploy: true
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: samlasoft-webservice-build
+    key: samlaosft-springboot-webservice.zip
+    bundle_type: zip
+    application: springboot-webservice # AWS CodeDeploy에 등록한 application 이름
+    deployment_group: springboot-webservice-group # AWS CodeDeploy에 등록한 group 이름
+    region: ap-northeast
+    wait-until-deployed: true
 
 # notice CI execute complet send mail.
 notifications:
