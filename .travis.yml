@@ -14,6 +14,21 @@ cache:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  - zip -r samlasoft-springboot-webservice *
+  - mkdir -p deploy
+  - mv samlasoft-springboot-webservice.zip deploy/samlasoft-springboot-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: samlasoft-webservice-build
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deploy: true
+
 # notice CI execute complet send mail.
 notifications:
   email:
