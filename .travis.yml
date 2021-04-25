@@ -39,7 +39,7 @@ deploy:
     bundle_type: zip
     application: springboot-webservice # AWS CodeDeploy에 등록한 application 이름
     deployment_group: springboot-webservice-group # AWS CodeDeploy에 등록한 group 이름
-    region: ap-northeast
+    region: ap-northeast-2
     wait-until-deployed: true
 
 # notice CI execute complet send mail.
