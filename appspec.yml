@@ -12,16 +12,8 @@ permissions:
     group: ec2-user
 
 hooks:
-  AfterInstall:
-    - location: scripts/stop.sh # stop not connected nginx springboot
-      timeout: 60
-      runas: ec2-user
   ApplicationStart:
-    - location: scripts/start.sh # start new springboot not connected port
-      timeout: 60
-      runas: ec2-user
-  ValidateService:
-    - location: scripts/health.sh # new stpringboot status check
+    - location: deploy.sh # start new springboot not connected port
       timeout: 60
       runas: ec2-user
 
