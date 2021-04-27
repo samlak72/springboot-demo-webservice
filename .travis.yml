@@ -22,7 +22,7 @@ before_deploy:
   - cp scripts/*.sh before-deploy/
   - cp appspec.yml before-deploy/
   - cp build/libs/*.jar before-deploy/
-  - cd before-deploy && zip -r before-deploy # before-deploy all zip
+  - cd before-deploy && zip -r before-deploy * # before-deploy all zip
   - cd ../ && mkdir -p deploy # move parent directory create deploy directory
   - mv before-deploy/before-deploy.zip deploy/samlasoft-springboot-webservice.zip
 
