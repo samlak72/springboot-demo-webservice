@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   profiles:
-    include: oauth, real-db
+    include: oauth2, real-db
   jpa:
     properties:
       hibernate:
