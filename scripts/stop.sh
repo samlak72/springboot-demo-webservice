@@ -13,7 +13,7 @@ if [ -z ${IDLE_PID} ]
 then
   echo "> do not stop current strating none application"
 else
-  echo "kill -15 $IDLE_PORT"
-  kill -15 ${IDLE_PORT}
+  echo "kill -15 IDLE_PID"
+  kill -15 ${IDLE_PID}
   sleep 5
 fi
