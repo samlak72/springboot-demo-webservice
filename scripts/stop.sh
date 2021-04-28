@@ -9,7 +9,7 @@ IDLE_PORT=$(find_idle_port)
 echo "> $IDLE_PORT starting application pid"
 IDLE_PID=$(lsof -ti tcp:${IDLE_PORT})
 
-if [ -z $(IDLE_PID) ]
+if [ -z ${IDLE_PID} ]
 then
   echo "> do not stop current strating none application"
 else
