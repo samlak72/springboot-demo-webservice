@@ -12,8 +12,16 @@ permissions:
     group: ec2-user
 
 hooks:
+  AfterInstall:
+    - location: stop.sh
+      timeout: 60
+      runas: ec2-user
   ApplicationStart:
-    - location: deploy.sh # start new springboot not connected port
+    - location: start.sh
+      timeout: 60
+      runas: ec2-user
+  ValidationService:
+    - location: health.sh
       timeout: 60
       runas: ec2-user
 
