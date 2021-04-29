@@ -2,12 +2,12 @@
 
 function find_idle_profile()
 {
-  echo "curl -s -o /dev/null -w "%{http_code}" http://localhost/profile"
+  #echo "curl -s -o /dev/null -w "%{http_code}" http://localhost/profile"
   RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile)
 
   echo "response code: ${RESPONSE_CODE}"
 
-  if [ ${RESPONSE_CODE} -ge 400 ]
+  if [ ${RESPONSE_CODE} -ge 400 ] # respone_code >= 400
   then
     CURRENT_PROFILE=real2
   else
